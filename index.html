@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Grade 10 Classmates System</title>
+
+    <style>
+        body {
+            background: #ffd3e8;
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+        }
+
+        .top-bar {
+            background: #ffffff;
+            color: rgb(255, 186, 211);
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .logo {
+            color: #ff4fa3;
+            font-weight: bold;
+        }
+
+        .nav a {
+            color: rgb(22, 21, 21);
+            margin-left: 20px;
+            text-decoration: none;
+        }
+
+        .header {
+            text-align: center;
+            padding: 30px;
+        }
+
+        .card {
+            background: white;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 6px;
+            border: 1px solid #ddd;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 10px;
+        }
+
+        button {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            color: white;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .add {
+            background: #ff4fa3;
+        }
+
+        .show {
+            background: #111;
+        }
+
+        .entry {
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="top-bar">
+    <div class="logo">10-Sapphire</div>
+    <div class="nav">
+        <a href="index.html">Classmates</a>
+        <a href="attendance.html">Attendance</a>
+        <a href="gallery.html">Gallery</a>
+    </div>
+</div>
+
+<div class="header">
+    <h2> Grade 10 Classmates System</h2>
+    <p>Add and view your classmates easily</p>
+</div>
+
+<div class="card">
+    <input type="text" id="nameInput" placeholder="Name">
+    <input type="text" id="sectionInput" placeholder="Section">
+    <input type="text" id="sportInput" placeholder="Sport">
+
+    <div class="btn-group">
+        <button class="add" onclick="addClassmate()">Add Classmate</button>
+        <button class="show" onclick="showList()">Show List</button>
+    </div>
+</div>
+
+<div class="card">
+    <h3>📋 Classmate List</h3>
+    <div id="list"></div>
+</div>
+
+<script>
+let classmates = [
+    { name: 'Charlotte', section: 'Topaz', sport: 'Volleyball' },
+    { name: 'Athena', section: 'Topaz', sport: 'Badminton' },
+    { name: 'Max', section: 'Topaz', sport: 'Badminton' },
+    { name: 'KC', section: 'Topaz', sport: 'Badminton' },
+    { name: 'Kleiser', section: 'Topaz', sport: 'Basketball' },
+    { name: 'Alonso', section: 'Topaz', sport: 'Baseball' },
+    { name: 'Cade', section: 'Topaz', sport: 'Basketball' },
+    { name: 'Jared', section: 'Topaz', sport: 'Volleyball' },
+    { name: 'Inigo', section: 'Topaz', sport: 'Basketball' },
+    { name: 'Zoe', section: 'Topaz', sport: 'Figure Skating' },
+    { name: 'Jaedin', section: 'Topaz', sport: 'Basketball' },
+    { name: 'Zyan', section: 'Topaz', sport: 'Badminton' },
+    { name: 'AC', section: 'Topaz', sport: 'Basketball' },
+    { name: 'Curt', section: 'Topaz', sport: 'Basketball' },
+    { name: 'Briana', section: 'Topaz', sport: 'Badminton' },
+    { name: 'Ethan', section: 'Topaz', sport: 'Baseball' },
+    { name: 'Sophia', section: 'Topaz', sport: 'Swimming' },
+    { name: 'Javi', section: 'Topaz', sport: 'Boxing' },
+    { name: 'Luis', section: 'Topaz', sport: 'Badminton' },
+    { name: 'Enzo', section: 'Topaz', sport: 'Football' },
+    { name: 'Yanna', section: 'Topaz', sport: 'Volleyball' },
+    { name: 'Victor', section: 'Topaz', sport: 'Basketball' },
+    { name: 'Kayla', section: 'Topaz', sport: 'Volleyball' },
+    { name: 'Kyler', section: 'Topaz', sport: 'Basketball' }
+];
+
+function renderList() {
+    const listDiv = document.getElementById("list");
+
+    listDiv.innerHTML = classmates.map(c =>
+        `<div class="entry">
+            Hi! I am <b>${c.name}</b> from ${c.section}, and my favorite sport is ${c.sport}.
+        </div>`
+    ).join("");
+}
+
+function addClassmate() {
+    const name = document.getElementById("nameInput").value.trim();
+    const section = document.getElementById("sectionInput").value.trim();
+    const sport = document.getElementById("sportInput").value.trim();
+
+    if (!name || !section || !sport) {
+        alert("Please fill in all fields!");
+        return;
+    }
+
+    classmates.push({ name, section, sport });
+
+    document.getElementById("nameInput").value = "";
+    document.getElementById("sectionInput").value = "";
+    document.getElementById("sportInput").value = "";
+
+    renderList();
+}
+
+function showList() {
+    renderList();
+}
+
+window.onload = renderList;
+</script>
+
+</body>
+</html>

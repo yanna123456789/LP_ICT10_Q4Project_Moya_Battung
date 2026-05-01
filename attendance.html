@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Attendance</title>
+
+    <link rel="stylesheet" href="https://pyscript.net/releases/2024.1.1/core.css">
+    <script type="module" src="https://pyscript.net/releases/2024.1.1/core.js"></script>
+
+    <py-config>
+        packages = ["matplotlib"]
+    </py-config>
+
+    <style>
+        body {
+            background: #ffdefd;
+            font-family: 'Segoe UI';
+        }
+
+        .top-bar {
+            background: rgb(255, 255, 255);
+            color: white;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .logo { color: #ff4fa3; }
+
+        .nav a {
+            color: rgb(18, 17, 17);
+            margin-left: 20px;
+            text-decoration: none;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+        }
+
+        .card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+
+        button {
+            background: #ff4fa3;
+            color: white;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+        }
+
+        #plot {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="top-bar">
+    <div class="logo">10-Sapphire</div>
+    <div class="nav">
+        <a href="index.html">Classmates</a>
+        <a href="attendance.html">Attendance</a>
+        <a href="gallery.html">Gallery</a>
+    </div>
+</header>
+
+<div class="container">
+
+    <h2>📊 Attendance Tracker</h2>
+
+    <div class="card">
+        <input id="day" placeholder="Day (e.g. Monday)">
+        <input id="absence" type="number" placeholder="Absences">
+        <button id="addBtn">Add Data</button>
+    </div>
+
+    <div id="plot"></div>
+
+</div>
+
+<py-script>
+from pyscript import document, display
+import matplotlib.pyplot as plt
+
+days = []
+absences = []
+
+def displaying(event=None):
+    d = document.getElementById("day").value
+    a = document.getElementById("absence").value
+
+    if not d or not a:
+        return
+
+    days.append(d)
+    absences.append(int(a))
+
+    plt.clf()
+    plt.plot(days, absences, marker='o')
+    plt.title("Weekly Attendance")
+    plt.xlabel("Day")
+    plt.ylabel("Absences")
+    plt.grid(True)
+
+    display(plt, target="plot", append=False)
+
+document.getElementById("addBtn").onclick = displaying
+</py-script>
+
+</body>
+</html>

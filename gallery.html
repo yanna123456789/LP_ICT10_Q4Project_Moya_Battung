@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Gallery</title>
+
+    <style>
+        body {
+            background: #ffdae2;
+            font-family: 'Segoe UI';
+            text-align: center;
+            margin: 0;
+        }
+
+        .top-bar {
+            background: rgb(255, 255, 255);
+            color: white;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo { color: #ff4fa3; }
+
+        .nav a {
+            color: rgb(9, 9, 9);
+            margin: 10px;
+            text-decoration: none;
+        }
+
+        h2 {
+            margin: 20px 0;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            max-width: 1000px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        .item {
+            background: white;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .caption {
+            margin-top: 8px;
+            font-size: 14px;
+            color: #333;
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="top-bar">
+    <div class="logo">10-Sapphire</div>
+    <div class="nav">
+        <a href="index.html">Classmates</a>
+        <a href="attendance.html">Attendance</a>
+        <a href="gallery.html">Gallery</a>
+    </div>
+</header>
+
+<h2>📸 Class Gallery</h2>
+
+<div class="gallery">
+
+    <div class="item">
+        <img src="bonding.jpeg">
+        <div class="caption">Class bonding moments</div>
+    </div>
+
+    <div class="item">
+        <img src="christmas2025.jpeg">
+        <div class="caption">Christmas 2025 celebration</div>
+    </div>
+
+    <div class="item">
+        <img src="girls_camping.png">
+        <div class="caption">Girls camping adventure</div>
+    </div>
+
+    <div class="item">
+        <img src="speech_choir.png">
+        <div class="caption">Speech choir performance</div>
+    </div>
+
+    <div class="item">
+        <img src="teachers_day.png">
+        <div class="caption">Teacher’s Day celebration</div>
+    </div>
+
+</div>
+
+</body>
+</html>
